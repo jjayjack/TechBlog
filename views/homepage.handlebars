@@ -1,0 +1,11 @@
+{{#each posts as |post|}}
+<div class="post-box">
+        <div class="label">
+        <h2 class="title">Title: {{post.title}}</h2>
+        <span class="user-date">User and Date: {{post.user_id}}{{post.date_created}}</span>
+        </div>
+        <div class="post-text">
+            Description: {{post.description}}
+        </div>
+    </div>
+{{/each}}

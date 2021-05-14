@@ -35,7 +35,6 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect password, please try again' });
       return;
     }
-
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -57,5 +56,16 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+router.post('/signup', async (req, res) => {
+  try{
+  const newUser = await User.create({
+    ...req.body
+  });
+  res.status(200).json(newUser);
+} catch (error){
+  res.status(400).json(error);
+}
+})
 
 module.exports = router;

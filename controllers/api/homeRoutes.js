@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
 
     // Serialize user data so templates can read it
     const posts = postData.map((project) => project.get({ plain: true }));
-    console.log("at posts")
 
     // Pass serialized data into Handlebars.js template
     res.render('homepage', { posts, logged_in: req.session.logged_in });
@@ -20,16 +19,21 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', auth, async (req, res) => {
   res.render('dashboard', {
     logged_in: req.session.logged_in,
-  })}
+  })
+}
 );
 
-router.get('/login', async (req, res) =>{
+router.get('/login', async (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
   res.render('login');
 })
+
+router.get('/signup', async (req, res) => {
+  res.render('signup')
+});
 
 
 

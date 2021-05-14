@@ -17,11 +17,25 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/dashboard', auth, async (req, res) => {
-  res.render('dashboard', {
-    logged_in: req.session.logged_in,
-  })
+  try {
+    const userPosts = [];
+    //want to connect post user_id with logged in user_id to render all posts made by user
+    Post.findAll({ where: { user_id: user_id } })
+      .then(userPostsList => {
+        res.render('dashboard',
+          {
+            userPostsList, logged_in: req.session.logged_in,
+          });
+      }
+      )
+    //   function(usePostsArr) {
+    // const userPostsList = userPosts.map((posts) => posts.get({ plain: true }))
+    
+  } catch (err) {
+  res.status(500).json(err);
+  console.log(err)
 }
-);
+});
 
 router.get('/login', async (req, res) => {
   if (req.session.logged_in) {

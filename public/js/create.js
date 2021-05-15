@@ -1,3 +1,6 @@
+// const { response } = require("express");
+
+//create new post
 const postFormHandler = async (event) => {
     event.preventDefault();
 
@@ -11,10 +14,11 @@ const postFormHandler = async (event) => {
     });
 
     if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     } else {
         alert('Unable to post')
     }
 }
 
 document.querySelector('.post-form').addEventListener('submit', postFormHandler);
+

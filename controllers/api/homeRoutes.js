@@ -4,11 +4,12 @@ const auth = require('../../utils/auth')
 
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll();
-
+    const postData = await Post.findAll({
+      include: [{model:User}]
+    });
     // Serialize user data so templates can read it
-    const posts = postData.map((project) => project.get({ plain: true }));
-
+    const posts = postData.map((post) => post.get({ plain: true }));
+console.log(posts);
     // Pass serialized data into Handlebars.js template
     res.render('homepage', { posts, logged_in: req.session.logged_in });
   } catch (err) {
@@ -50,7 +51,6 @@ router.get('/dashboard/create', auth, async (req, res) => {
 
 router.get('/dashboard/:id', auth, async (req, res) => {
     const prevPosts = await Post.findByPk(req.params.id);
-console.log(prevPosts);
     // const prev = prevPosts.map((post) => post.get({ plain: true }));
   try {
     res.render('edit', {

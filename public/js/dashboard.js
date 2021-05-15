@@ -5,7 +5,8 @@ const editPrevPost = async(event)=> {
     
     document.location.replace('/dashboard/' + id)  
 }
-document.querySelector('.editBtn').addEventListener('click', editPrevPost);
+document.querySelectorAll('.editBtn').forEach(userPost => {userPost.addEventListener('click', editPrevPost)});
+
 
 //deletes previous post
 const deletePrevPost = async (event) => {

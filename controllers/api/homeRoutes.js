@@ -18,24 +18,49 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', auth, async (req, res) => {
   try {
-    const userPosts = [];
+    const userPosts = await Post.findAll({
+      where: {user_id: req.session.user_id}});
+
+    const prevPosts = userPosts.map((post) => post.get({ plain: true }));
     //want to connect post user_id with logged in user_id to render all posts made by user
-    Post.findAll({ where: { user_id: user_id } })
-      .then(userPostsList => {
+      try{
         res.render('dashboard',
           {
-            userPostsList, logged_in: req.session.logged_in,
+             logged_in: req.session.logged_in,
+             posts: prevPosts,
           });
-      }
-      )
-    //   function(usePostsArr) {
-    // const userPostsList = userPosts.map((posts) => posts.get({ plain: true }))
-    
+        }catch (err) {
+          res.status(500).json(err)
+        } 
   } catch (err) {
   res.status(500).json(err);
   console.log(err)
 }
 });
+
+router.get('/dashboard/create', auth, async (req, res) => {
+  try {
+    res.render('create', {
+      logged_in: req.session.logged_in
+    });
+  }catch(err){
+    res.status(500).json(err)
+  }
+});
+
+router.get('/dashboard/:id', auth, async (req, res) => {
+    const prevPosts = await Post.findByPk(req.params.id);
+console.log(prevPosts);
+    // const prev = prevPosts.map((post) => post.get({ plain: true }));
+  try {
+    res.render('edit', {
+      post:prevPosts.dataValues, logged_in: req.session.logged_in
+    });
+  }catch(err){
+    res.status(500).json(err)
+  }
+});
+
 
 router.get('/login', async (req, res) => {
   if (req.session.logged_in) {

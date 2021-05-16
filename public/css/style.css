@@ -1,12 +1,138 @@
-* {
-    background-color: rgb(247, 247, 148);
+:root {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(73, 72, 72)
+    --dark-blue: rgb(31, 34, 80);
+    --light-blue: rgb(73, 123, 230);
+    --off-blue: rgb(171, 175, 236);
+    --white: rgb(255, 255, 255);
+}
+a{
+    color: inherit;
+}
+a:hover{
+    color: var(--white);
 }
 
-.header {
-    background-color:rgb(73, 72, 72);
-    color: rgb(247, 247, 148);   
+/* nav bar */
+.header{
+    background-color:var(--dark-blue);
+    color:var(--off-blue);
+    display: flex;
+    justify-content: flex-end;
 }
 
+li > a {
+    text-decoration: none;
+    color: var(--off-blue);
+    font-weight: bolder;
+}
 
+.title{
+    color: var(--white);
+    text-align: end;
+    margin: 5px;
+}
+
+/* homepage */
+.post-box, .login, .signup, .createPost, .createComment{
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 5px solid rgb(31, 34, 80);
+    border-radius: 5px;
+}
+
+.headLabel{
+    background-color: var(--off-blue);
+    color: var(--dark-blue);
+    border-bottom: 5px double var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-title, .newPost, .form-label{
+    text-decoration: none;
+    font-weight: bold;
+    align-self: center;
+    margin: 5px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.user{
+    display:flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    flex-direction: column;
+}
+.user-name, .user-date{
+    align-self: flex-end;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.post-text, .comment-text{
+    background-color: var(--white);
+    color: var(--light-blue);
+    padding: 10px;
+    margin:10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* dashboard */
+.user-dash{
+    margin: 10px;
+    color: var(--dark-blue);
+    text-align: center;
+}
+
+.create{
+    text-decoration: none;
+    color: var(--light-blue);
+    background-color: var(--off-blue);
+    width: fit-content;
+    text-align: left;
+    border-radius: 5px;
+}
+.button{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.editBtn, .deleteBtn, .postBtn, .loginBtn, .signupBtn {
+    width: fit-content;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* edit */
+#title-content, #content {
+    background-color: transparent;
+    font-style: italic;
+}
+
+/* login */
+.userLogin{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+.user-password{
+    width: fit-content;
+    align-content: space-around;
+    margin: 10px;
+}
+
+.userlog, .userpass, .usernam{
+    color: var(--light-blue);
+}
+.form-group{
+    width: fit-content;
+}

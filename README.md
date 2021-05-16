@@ -1,5 +1,12 @@
 # TechBlog
   
+## Deployed link: 
+https://git.heroku.com/sheltered-savannah-80461.git
+
+testing login: dale@test.com
+testing password: password1234
+
+
 ## Description:
   This application is set up to be a mini forum for users to create their own posts to which they can edit, delete and comment on and view and reply on other user's posts. During this process, I learned more about applying the CRUD model to multiple applications and routes, the usefulness of handlebars, and connecting controllers to created database and client requests.
   

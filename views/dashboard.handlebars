@@ -1,24 +1,30 @@
-{{!-- handlebar for individual user dashboard: previous posts - can edit and delete and take user to create new post --}}
-
-<div class="container create">
-    <a class="nav-link" href="/dashboard/create">Create New</a>
-</div>
-
-{{!-- View previous post by user --}}
-<div class="container previous-post">
-    {{#each posts as |post|}}
-    <div class="post-box">
-        <div class="label">
-            <h2 class="title">Title: {{post.title}}</h2>
-            <span class="user-date">Date: {{post.date_created}}</span>
-        </div>
-        <div class="post-text">
-            Description: {{post.description}}
-        </div>
-        <button class="editBtn" data-id="{{post.id}}">Edit</button>
-        <button class="deleteBtn" data-id="{{post.id}}">Delete</button>
+{{!-- handlebar for individual user dashboard: previous posts - can edit and delete and take user to create new post
+--}}
+<div class="dashboard">
+    <h1 class="user-dash">
+        Welcome to your posts {{user.name}}!
+    </h1>
+    <div class="container create">
+        <a class="nav-link" href="/dashboard/create">Create New Post</a>
     </div>
-    {{/each}}
-</div>
 
+    {{!-- View previous post by user --}}
+    <div class="container previous-post">
+        {{#each posts as |post|}}
+        <div class="post-box">
+            <div class="headLabel">
+                <h2 class="post-title"> {{post.title}}</h2>
+                <span class="user-date">Date Posted: {{post.date_created}}</span>
+            </div>
+            <h3 class="post-text">
+               {{post.description}}
+            </h3>
+            <div class="button">
+                <button class="editBtn" data-id="{{post.id}}">Edit</button>
+                <button class="deleteBtn" data-id="{{post.id}}">Delete</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
 <script src="/js/dashboard.js"></script>

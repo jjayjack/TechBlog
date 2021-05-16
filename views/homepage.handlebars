@@ -1,12 +1,25 @@
-{{#each posts as |post|}}
-<div class="post-box">
-        <div class="label">
-        <h2 class="title">Title: {{post.title}}</h2>
-        <span class="user-name">User: {{post.user.name}}</span>
-        <span class="user-date">Date: {{post.date_created}}</span>
-        </div>
-        <div class="post-text">
-            Description: {{post.description}}
+<div class="homepage">
+    <div class="container">
+        <h1 class="user-dash">Welcome to our community forum! </h1>
+            <h2 class="user-dash">Sign in to get started</h2>
+    </div>
+
+    {{#each posts as |post|}}
+    <div class="container">
+        <div class="post-box">
+            <div class="headLabel">
+                <a class="post-title" href="/post/{{post.id}}"><h2 class="post-title">{{post.title}}<h2></h1></a>
+                <div class="user">
+                    <span class="user-name">{{post.user.name}}</span>
+                    <span class="user-date">Posted: {{post.date_created}}</span>
+                </div>
+            </div>
+            <div class="post-text">
+                <h3>{{post.description}}</h3>
+            </div>
         </div>
     </div>
-{{/each}}
+    {{/each}}
+</div>
+
+<script src="/js/homepage.js"></script>

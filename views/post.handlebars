@@ -1,0 +1,43 @@
+<div class="post-box">
+    <div class="headLabel">
+        <h2 class="post-title">{{post.title}}</h2>
+        <span class="user-name">{{post.user.dataValues.name}}</span>
+        <span class="user-date">Date: {{post.date_created}}</span>
+    </div>
+    <h3 class="post-text">
+       {{post.description}}
+    </h3>
+</div>
+
+<div class="container ">
+    <div>
+        <h2 class="user-dash">Comments</h2>
+        <div class="createComment">
+            <form class="form comment-form" data-id="{{post.id}}">
+                <div class="headLabel">
+                    <label for="content" class="form-label">Comment</label>
+                </div>
+                <textarea class="form-control" id="comment" rows="2"></textarea>
+
+                <div class="col-12">
+                    <button class="btn btn-primary postBtn" type="submit">Post</button>
+                </div>
+        </div>
+        </form>
+
+        {{#each post.comments as |comment|}}
+        <div class="post-box">
+            <div class="headLabel">
+                <span class="user-name">{{comment.dataValues.user.dataValues.name}}</span>
+                <span class="user-date">Date: {{comment.dataValues.date_created}}</span>
+                </div>
+                <h3 class="comment-text">
+                    {{comment.dataValues.description}}
+                </h3>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="/js/comment.js"></script>
